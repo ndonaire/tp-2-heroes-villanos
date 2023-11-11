@@ -5,7 +5,6 @@ import State.Habilidad;
 public abstract class Personaje implements Competidor{
 	
 	protected Habilidad habilidad;
-	protected int idTipoCompetidor;
 	protected int nombreCompetidor;
 	protected boolean estaEnAlgunaLiga;
 	
@@ -14,16 +13,11 @@ public abstract class Personaje implements Competidor{
 
 	@Override
 	public abstract boolean esVillano();
-
-	@Override
+	
 	public boolean esLigaHeroe() {
-		// TODO Auto-generated method stub
 		return false;
 	}
-
-	@Override
 	public boolean esLigaVillano() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -55,5 +49,11 @@ public abstract class Personaje implements Competidor{
 	public Habilidad getHabilidad() {
 		return this.habilidad;
 	}
+
+	public void setEstaEnAlgunaLiga(boolean estaEnAlgunaLiga) {
+		this.estaEnAlgunaLiga = estaEnAlgunaLiga;
+	}
+	
+	
 
 }
