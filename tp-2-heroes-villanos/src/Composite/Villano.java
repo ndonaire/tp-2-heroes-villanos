@@ -21,5 +21,10 @@ public class Villano extends Personaje {
 	public boolean esVillano() {
 		return true;
 	}
+	
+	@Override
+	public String getNombreLiga() {
+		return null;
+	}
 
 }

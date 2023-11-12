@@ -21,7 +21,9 @@ public interface Competidor {
 	public int getVelocidad();
 
 	public int getDestreza();
-
+	
+	public String getNombreLiga();
+	
 	public boolean getEstaEnAlgunaLiga();
 
 	public void setEstaEnAlgunaLiga(boolean b);

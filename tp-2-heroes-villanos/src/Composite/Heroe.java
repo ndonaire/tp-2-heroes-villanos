@@ -21,4 +21,9 @@ public class Heroe extends Personaje {
 		return false;
 	}
 
+	@Override
+	public String getNombreLiga() {
+		return null;
+	}
+
 }
