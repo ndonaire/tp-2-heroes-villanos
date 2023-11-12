@@ -1,17 +1,14 @@
 package Composite;
-import State.Habilidad;
 
-public class Heroe extends Personaje{
-		
-	protected Habilidad habilidad;
-	protected int nombreCompetidor;
-	protected boolean estaEnAlgunaLiga;
-	
-	public Heroe(Habilidad habilidad, int nombreCompetidor, boolean estaEnAlgunaLiga) {
-		super();
-		this.habilidad = habilidad;
-		this.nombreCompetidor = nombreCompetidor;
-		this.estaEnAlgunaLiga = estaEnAlgunaLiga;
+public class Heroe extends Personaje {
+
+	public Heroe(String nombreReal, String nombrePersonaje, int fuerza, int resistencia, int velocidad, int destreza) {
+		super(nombreReal, nombrePersonaje, fuerza, resistencia, velocidad, destreza);
+	}
+
+	@Override
+	public String toString() {
+		return "Heroe [Nombre de héroe=" + nombrePersonaje + "]";
 	}
 
 	@Override

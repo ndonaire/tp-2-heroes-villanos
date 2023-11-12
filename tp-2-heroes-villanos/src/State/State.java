@@ -1,6 +1,6 @@
 package State;
 
-import Composite.Personaje;
+import Composite.Competidor;
 
 public abstract class State {
 
@@ -14,6 +14,6 @@ public abstract class State {
 
 	public abstract boolean siguienteCaracteristica();
 
-	public abstract int getValorCaracteristica(Personaje c);
-
+	public abstract int getValorCaracteristica(Competidor c);
+	
 }

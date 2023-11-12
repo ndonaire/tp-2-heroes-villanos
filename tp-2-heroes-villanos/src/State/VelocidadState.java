@@ -1,6 +1,6 @@
 package State;
 
-import Composite.Personaje;
+import Composite.Competidor;
 
 public class VelocidadState extends State {
 	
@@ -22,7 +22,7 @@ public class VelocidadState extends State {
 	}
 
 	@Override
-	public int getValorCaracteristica(Personaje c) {
+	public int getValorCaracteristica(Competidor c) {
 		return c.getVelocidad();
 	}
 

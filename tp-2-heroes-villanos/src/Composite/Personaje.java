@@ -47,53 +47,31 @@ public abstract class Personaje implements Competidor {
 
 		return false;
 	}
+	
+	public abstract String toString();
 
 	public int getFuerza() {
 		return fuerza;
-	}
-
-	public void setFuerza(int fuerza) {
-		this.fuerza = fuerza;
 	}
 
 	public int getResistencia() {
 		return resistencia;
 	}
 
-	public void setResistencia(int resistencia) {
-		this.resistencia = resistencia;
-	}
-
 	public int getVelocidad() {
 		return velocidad;
-	}
-
-	public void setVelocidad(int velocidad) {
-		this.velocidad = velocidad;
 	}
 
 	public int getDestreza() {
 		return destreza;
 	}
 
-	public void setDestreza(int destreza) {
-		this.destreza = destreza;
-	}
-
 	public String getNombreReal() {
 		return nombreReal;
 	}
 
-	public void setNombreReal(String nombreReal) {
-		this.nombreReal = nombreReal;
-	}
-
 	public String getNombrePersonaje() {
 		return nombrePersonaje;
-	}
-
-	public void setNombrePersonaje(String nombrePersonaje) {
-		this.nombrePersonaje = nombrePersonaje;
 	}
 
 	public boolean getEstaEnAlgunaLiga() {

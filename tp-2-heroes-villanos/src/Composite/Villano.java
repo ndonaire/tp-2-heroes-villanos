@@ -1,17 +1,15 @@
 package Composite;
-import State.Habilidad;
 
-public class Villano extends Personaje{
-	
-	protected Habilidad habilidad;
-	protected int nombreCompetidor;
-	protected boolean estaEnAlgunaLiga;
-	
-	public Villano(Habilidad habilidad, int nombreCompetidor, boolean estaEnAlgunaLiga) {
-		super();
-		this.habilidad = habilidad;
-		this.nombreCompetidor = nombreCompetidor;
-		this.estaEnAlgunaLiga = estaEnAlgunaLiga;
+public class Villano extends Personaje {
+
+	public Villano(String nombreReal, String nombrePersonaje, int fuerza, int resistencia, int velocidad,
+			int destreza) {
+		super(nombreReal, nombrePersonaje, fuerza, resistencia, velocidad, destreza);
+	}
+
+	@Override
+	public String toString() {
+		return "Villano [Nombre de Villano=" + nombrePersonaje + "]";
 	}
 
 	@Override
@@ -23,5 +21,5 @@ public class Villano extends Personaje{
 	public boolean esVillano() {
 		return true;
 	}
-	
+
 }

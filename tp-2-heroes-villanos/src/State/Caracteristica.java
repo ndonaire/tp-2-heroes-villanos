@@ -1,6 +1,6 @@
 package State;
 
-import Composite.Personaje;
+import Composite.Competidor;
 
 public class Caracteristica {
 	
@@ -33,7 +33,7 @@ public class Caracteristica {
 		return state.siguienteCaracteristica();
 	}
 	
-	public int getValorCaracteristica (Personaje c) {
+	public int getValorCaracteristica (Competidor c) {
 		return state.getValorCaracteristica(c);
 	}
 }
