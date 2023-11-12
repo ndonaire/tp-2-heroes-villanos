@@ -20,7 +20,7 @@ public class LigaVillano extends Liga {
 
 	@Override
 	public boolean agregarCompetidor(Competidor c) throws AddToLeagueException {
-		if (this.getNombreLiga() == c.getNombreLiga()) {
+		if (this.getNombre() == c.getNombre()) {
 			throw new AddToLeagueException("No puede agregarse la liga a si misma");
 		}
 		

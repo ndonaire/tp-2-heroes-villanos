@@ -25,7 +25,7 @@ public class LigaTests {
 
 	@Test
 	public void testEliminarCompetidor() throws AddToLeagueException, DeleteCompetitorException {
-		String resultadoEsperado = "Liga: Liga de la justicia[[Heroe [Nombre de héroe=Superman]]]";
+		String resultadoEsperado = "Liga de la justicia, Superman";
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 100, 100, 100, 50);
 		Personaje p2 = new Heroe("Clark Kent", "Superman", 100, 200, 200, 100);
 
@@ -40,7 +40,7 @@ public class LigaTests {
 
 	@Test
 	public void testEliminarLigaAnidada() throws AddToLeagueException, DeleteCompetitorException {
-		String resultadoEsperado = "Liga: Liga de la justicia 2[[]]";
+		String resultadoEsperado = "Liga de la justicia 2";
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 100, 100, 100, 50);
 		Personaje p2 = new Heroe("Clark Kent", "Superman", 100, 200, 200, 100);
 

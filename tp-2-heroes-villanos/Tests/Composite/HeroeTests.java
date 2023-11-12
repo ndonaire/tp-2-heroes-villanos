@@ -7,7 +7,7 @@ public class HeroeTests {
 
 	@Test
 	public void testCrearHeroe() {
-		String resultadoEsperado = "Heroe [Nombre de héroe=Batman]";
+		String resultadoEsperado = "Heroe  , Bruno Diaz               , Batman                   ,   50,  100,  100,  100";
 		Personaje p = new Heroe("Bruno Diaz", "Batman", 100, 100, 100, 50);
 		Assert.assertEquals(p.toString(), resultadoEsperado);
 	}

@@ -51,8 +51,6 @@ public abstract class Personaje implements Competidor {
 		return false;
 	}
 
-	public abstract String toString();
-
 	public int getFuerza() {
 		return fuerza;
 	}
@@ -73,10 +71,10 @@ public abstract class Personaje implements Competidor {
 		return nombreReal;
 	}
 
-	public String getNombrePersonaje() {
+	public String getNombre() {
 		return nombrePersonaje;
 	}
-
+	
 	public boolean getEstaEnAlgunaLiga() {
 		return estaEnAlgunaLiga;
 	}
@@ -84,5 +82,6 @@ public abstract class Personaje implements Competidor {
 	public void setEstaEnAlgunaLiga(boolean estaEnAlgunaLiga) {
 		this.estaEnAlgunaLiga = estaEnAlgunaLiga;
 	}
-
+	
+	public abstract String toString();
 }

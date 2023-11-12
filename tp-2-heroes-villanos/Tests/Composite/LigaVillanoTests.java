@@ -23,7 +23,7 @@ public class LigaVillanoTests {
 
 	@Test
 	public void testAgregarVillanos() throws AddToLeagueException {
-		String resultadoEsperado = "Liga: Villanas[[Villano [Nombre de Villano=Harley Quinn], Villano [Nombre de Villano=Hiedra Venenosa]]]";
+		String resultadoEsperado = "Villanas, Harley Quinn, Hiedra Venenosa";
 
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 100, 100, 100, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 100, 100, 100, 50);
@@ -37,7 +37,7 @@ public class LigaVillanoTests {
 
 	@Test
 	public void testAgregarLigasAnidadas() throws AddToLeagueException {
-		String resultadoEsperado = "Liga: Liga Villanos Total[[Liga: Liga Villanas[[Villano [Nombre de Villano=Harley Quinn], Villano [Nombre de Villano=Hiedra Venenosa]]], Liga: liga Villanos[[Villano [Nombre de Villano=Joker], Villano [Nombre de Villano=Lex Lutor]]]]]";
+		String resultadoEsperado = "Liga Villanos Total, Liga Villanas, liga Villanos";
 
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 100, 100, 100, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 100, 100, 100, 50);

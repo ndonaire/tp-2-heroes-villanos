@@ -7,7 +7,7 @@ public class VillanoTests {
 
 	@Test
 	public void testCrearVillano() {
-		String resultadoEsperado = "Villano [Nombre de Villano=Harley Quinn]";
+		String resultadoEsperado = "Villano, Harleen Frances Quinzel  , Harley Quinn             ,   50,  100,  100,  100";
 		Personaje p = new Villano("Harleen Frances Quinzel", "Harley Quinn", 100, 100, 100, 50);
 		Assert.assertEquals(p.toString(), resultadoEsperado);
 	}

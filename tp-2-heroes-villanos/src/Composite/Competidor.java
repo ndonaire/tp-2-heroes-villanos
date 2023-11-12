@@ -22,7 +22,7 @@ public interface Competidor {
 
 	public int getDestreza();
 	
-	public String getNombreLiga();
+	public String getNombre();
 	
 	public boolean getEstaEnAlgunaLiga();
 

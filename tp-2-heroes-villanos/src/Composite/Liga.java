@@ -36,6 +36,10 @@ public abstract class Liga implements Competidor {
 
 	public abstract boolean agregarCompetidor(Competidor c) throws AddToLeagueException;
 
+	public boolean ligaVacia() {
+		return this.competidoresEnLiga.isEmpty();
+	}
+
 	public boolean eliminarCompetidor(Competidor c) throws DeleteCompetitorException {
 		if (!c.getEstaEnAlgunaLiga()) {
 			throw new DeleteCompetitorException("No se puede eliminar, no pertenece a ninguna liga");
@@ -118,13 +122,17 @@ public abstract class Liga implements Competidor {
 		this.estaEnAlgunaLiga = estaEnAlgunaLiga;
 	}
 
-	public String getNombreLiga() {
+	public String getNombre() {
 		return nombreLiga;
 	}
 
 	@Override
 	public String toString() {
-		return "Liga: " + this.nombreLiga + "[" + this.competidoresEnLiga + "]";
+		String s = this.nombreLiga;
+        for (Competidor c : this.competidoresEnLiga) {
+            s = s + ", " + c.getNombre();
+        }
+        return s;
 	}
 
 }

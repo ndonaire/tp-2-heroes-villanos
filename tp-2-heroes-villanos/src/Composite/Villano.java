@@ -9,7 +9,9 @@ public class Villano extends Personaje {
 
 	@Override
 	public String toString() {
-		return "Villano [Nombre de Villano=" + nombrePersonaje + "]";
+		return String.format("Villano, %-25s, %-25s, %4d, %4d, %4d, %4d", this.getNombreReal(),
+				this.getNombre(), this.getVelocidad(), this.getFuerza(), this.getResistencia(),
+				this.getDestreza());
 	}
 
 	@Override
@@ -20,11 +22,6 @@ public class Villano extends Personaje {
 	@Override
 	public boolean esVillano() {
 		return true;
-	}
-
-	@Override
-	public String getNombreLiga() {
-		return null;
 	}
 
 }

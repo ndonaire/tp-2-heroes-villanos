@@ -23,7 +23,7 @@ public class LigaHeroeTests {
 
 	@Test
 	public void testAgregarHeroes() throws AddToLeagueException {
-		String resultadoEsperado = "Liga: Liga de la justicia[[Heroe [Nombre de héroe=Batman], Heroe [Nombre de héroe=Superman]]]";
+		String resultadoEsperado = "Liga de la justicia, Batman, Superman";
 
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 100, 100, 100, 50);
 		Personaje p2 = new Heroe("Clark Kent", "Superman", 100, 200, 200, 100);
@@ -37,7 +37,7 @@ public class LigaHeroeTests {
 
 	@Test
 	public void testAgregarLigasAnidadas() throws AddToLeagueException {
-		String resultadoEsperado = "Liga: Liga de la justicia Total[[Liga: Liga de la justicia 1[[Heroe [Nombre de héroe=Batman], Heroe [Nombre de héroe=Superman]]], Liga: Liga de la justicia 2[[Heroe [Nombre de héroe=Aquaman], Heroe [Nombre de héroe=Linterna Verde]]]]]";
+		String resultadoEsperado = "Liga de la justicia Total, Liga de la justicia 1, Liga de la justicia 2";
 
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 100, 100, 100, 50);
 		Personaje p2 = new Heroe("Clark Kent", "Superman", 100, 200, 200, 100);
