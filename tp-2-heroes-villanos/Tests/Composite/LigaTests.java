@@ -144,6 +144,21 @@ public class LigaTests {
 	}
 	
 	@Test
+	public void testLigaVsCompetidorEsGanador() throws AddToLeagueException {
+		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 500, 50, 50);
+		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 500, 50, 50);
+		
+		Personaje p3 = new Heroe("Bruno Diaz", "Batman", 100, 100, 100, 100);
+						
+		LigaVillano ligaVillanos = new LigaVillano("Villanas");
+		ligaVillanos.agregarCompetidor(p1);
+		ligaVillanos.agregarCompetidor(p2);
+
+		Assert.assertEquals(ligaVillanos.esGanador(p3, new Caracteristica(2)), true);
+		
+	}
+	
+	@Test
 	public void testLigaVsLigaNoEsGanador() throws AddToLeagueException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 50, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 50, 50, 50);
@@ -164,7 +179,22 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsLigaNoEsEmpateGana() throws AddToLeagueException {
+	public void testLigaVsCompetidorNoEsGanador() throws AddToLeagueException {
+		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 500, 50, 50);
+		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 500, 50, 50);
+		
+		Personaje p3 = new Heroe("Bruno Diaz", "Batman", 100, 100, 100, 100);
+						
+		LigaVillano ligaVillanos = new LigaVillano("Villanas");
+		ligaVillanos.agregarCompetidor(p1);
+		ligaVillanos.agregarCompetidor(p2);
+
+		Assert.assertEquals(ligaVillanos.esGanador(p3, new Caracteristica(1)), false);
+		
+	}
+	
+	@Test
+	public void testLigaVsLigaEmpateGana() throws AddToLeagueException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 50, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 50, 50, 50);
 		
@@ -184,7 +214,22 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsLigaNoEsEmpatePierde() throws AddToLeagueException {
+	public void testLigaVsCompetidorEmpateGana() throws AddToLeagueException {
+		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 500, 50, 50);
+		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 500, 50, 50);
+		
+		Personaje p3 = new Heroe("Bruno Diaz", "Batman", 100, 100, 100, 100);
+						
+		LigaVillano ligaVillanos = new LigaVillano("Villanas");
+		ligaVillanos.agregarCompetidor(p1);
+		ligaVillanos.agregarCompetidor(p2);
+
+		Assert.assertEquals(ligaVillanos.esGanador(p3, new Caracteristica(1)), false);
+		
+	}
+	
+	@Test
+	public void testLigaVsLigaEmpatePierde() throws AddToLeagueException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 50, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 50, 50, 50);
 		
@@ -204,7 +249,22 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsLigaNoEsEmpateFinal() throws AddToLeagueException {
+	public void testLigaVsCompetidorEmpatePierde() throws AddToLeagueException {
+		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 500, 50, 50);
+		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 500, 50, 50);
+		
+		Personaje p3 = new Heroe("Bruno Diaz", "Batman", 50, 1000, 100, 100);
+						
+		LigaVillano ligaVillanos = new LigaVillano("Villanas");
+		ligaVillanos.agregarCompetidor(p1);
+		ligaVillanos.agregarCompetidor(p2);
+
+		Assert.assertEquals(ligaVillanos.esGanador(p3, new Caracteristica(1)), false);
+		
+	}
+	
+	@Test
+	public void testLigaVsLigaEmpateFinal() throws AddToLeagueException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 50, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 50, 50, 50);
 		
@@ -220,6 +280,21 @@ public class LigaTests {
 		ligaDeLaJusticia.agregarCompetidor(p4);
 
 		Assert.assertEquals(ligaDeLaJusticia.esGanador(ligaVillanos, new Caracteristica(2)), false);
+		
+	}
+	
+	@Test
+	public void testLigaVsCompetidorEmpateFinal() throws AddToLeagueException {
+		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 500, 50, 50);
+		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 500, 50, 50);
+		
+		Personaje p3 = new Heroe("Bruno Diaz", "Batman", 50, 500, 50, 50);
+						
+		LigaVillano ligaVillanos = new LigaVillano("Villanas");
+		ligaVillanos.agregarCompetidor(p1);
+		ligaVillanos.agregarCompetidor(p2);
+
+		Assert.assertEquals(ligaVillanos.esGanador(p3, new Caracteristica(1)), false);
 		
 	}
 
