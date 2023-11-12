@@ -1,17 +1,11 @@
 package Composite;
 
-import State.Caracteristica;
+import Exceptions.AddToLeagueException;
 
 public class LigaVillano extends Liga {
 
 	public LigaVillano(String nombreLiga) {
 		super(nombreLiga);
-	}
-
-	@Override
-	public boolean esGanador(Personaje c2, Caracteristica c) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override
@@ -25,17 +19,17 @@ public class LigaVillano extends Liga {
 	}
 
 	@Override
-	public boolean agregarCompetidor(Competidor c) throws RuntimeException {
+	public boolean agregarCompetidor(Competidor c) throws AddToLeagueException {
 		if (this.competidoresEnLiga.contains(c)) {
-			throw new RuntimeException("Ya pertenece a esta liga");
+			throw new AddToLeagueException("Ya pertenece a esta liga");
 		}
 
 		if (c.getEstaEnAlgunaLiga()) {
-			throw new RuntimeException("Ya pertenece a una liga");
+			throw new AddToLeagueException("Ya pertenece a una liga");
 		}
 
 		if (!c.esVillano() && !c.esLigaVillano()) {
-			throw new RuntimeException("El competidor es un héroe, no puede incluirse en una liga de villanos");
+			throw new AddToLeagueException("El competidor es un héroe, no puede incluirse en una liga de villanos");
 		}
 		this.competidoresEnLiga.add(c);
 		c.setEstaEnAlgunaLiga(true);

@@ -4,7 +4,7 @@ import State.Caracteristica;
 
 public interface Competidor {
 
-	public boolean esGanador(Personaje c2, Caracteristica c);
+	public boolean esGanador(Competidor c2, Caracteristica c);
 
 	public boolean esHeroe();
 

@@ -2,6 +2,8 @@ package Composite;
 
 import java.util.List;
 
+import Exceptions.AddToLeagueException;
+import Exceptions.DeleteCompetitorException;
 import State.Caracteristica;
 
 import java.util.ArrayList;
@@ -31,63 +33,80 @@ public abstract class Liga implements Competidor {
 	public abstract boolean esLigaHeroe();
 
 	public abstract boolean esLigaVillano();
-	
-	public abstract boolean agregarCompetidor(Competidor c);
-	
-	public boolean eliminarCompetidor(Competidor c) throws RuntimeException {
-		if(!c.getEstaEnAlgunaLiga()) {
-			throw new RuntimeException("No se puede eliminar, no pertenece a ninguna liga");
+
+	public abstract boolean agregarCompetidor(Competidor c) throws AddToLeagueException;
+
+	public boolean eliminarCompetidor(Competidor c) throws DeleteCompetitorException {
+		if (!c.getEstaEnAlgunaLiga()) {
+			throw new DeleteCompetitorException("No se puede eliminar, no pertenece a ninguna liga");
 		}
-		if(this.competidoresEnLiga.contains(c)) {	
-			throw new RuntimeException("No se puede eliminar, no pertenece a esta liga");
+		if (this.competidoresEnLiga.contains(c)) {
+			throw new DeleteCompetitorException("No se puede eliminar, no pertenece a esta liga");
 		}
 		this.competidoresEnLiga.remove(c);
 		c.setEstaEnAlgunaLiga(false);
 		return true;
-	}	
-	
+	}
+
 	public boolean esGanador(Competidor competidor, Caracteristica caracteristica) {
 		do {
 			if (caracteristica.getValorCaracteristica(this) > caracteristica.getValorCaracteristica(competidor)) {
 				return true;
 			}
-		} while (caracteristica.siguienteCaracteristica()); 
-		
+		} while (caracteristica.siguienteCaracteristica());
+
 		return false;
 	}
-	
+
 	public int getFuerza() {
-		int sumatoriaFuerza = 0 ;
-		for(Competidor competidor : this.competidoresEnLiga) {
-			sumatoriaFuerza += competidor.getFuerza();
+		if (this.competidoresEnLiga.size() != 0) {
+			int sumatoriaFuerza = 0;
+			for (Competidor competidor : this.competidoresEnLiga) {
+				sumatoriaFuerza += competidor.getFuerza();
+			}
+			return sumatoriaFuerza / this.competidoresEnLiga.size();
+		} else {
+			return 0;
 		}
-		return sumatoriaFuerza / this.competidoresEnLiga.size();
+
 	}
 
 	public int getResistencia() {
-		int sumatoriaResistencia = 0 ;
-		for(Competidor competidor : this.competidoresEnLiga) {
-			sumatoriaResistencia += competidor.getResistencia();
+		if (this.competidoresEnLiga.size() != 0) {
+			int sumatoriaResistencia = 0;
+			for (Competidor competidor : this.competidoresEnLiga) {
+				sumatoriaResistencia += competidor.getResistencia();
+			}
+			return sumatoriaResistencia / this.competidoresEnLiga.size();
+		} else {
+			return 0;
 		}
-		return sumatoriaResistencia / this.competidoresEnLiga.size();
 	}
 
 	public int getVelocidad() {
-		int sumatoriaVelocidad = 0 ;
-		for(Competidor competidor : this.competidoresEnLiga) {
-			sumatoriaVelocidad += competidor.getVelocidad();
+		if (this.competidoresEnLiga.size() != 0) {
+			int sumatoriaVelocidad = 0;
+			for (Competidor competidor : this.competidoresEnLiga) {
+				sumatoriaVelocidad += competidor.getVelocidad();
+			}
+			return sumatoriaVelocidad / this.competidoresEnLiga.size();
+		} else {
+			return 0;
 		}
-		return sumatoriaVelocidad / this.competidoresEnLiga.size();
 	}
 
 	public int getDestreza() {
-		int sumatoriaDestreza = 0 ;
-		for(Competidor competidor : this.competidoresEnLiga) {
-			sumatoriaDestreza += competidor.getDestreza();
+		if (this.competidoresEnLiga.size() != 0) {
+			int sumatoriaDestreza = 0;
+			for (Competidor competidor : this.competidoresEnLiga) {
+				sumatoriaDestreza += competidor.getDestreza();
+			}
+			return sumatoriaDestreza / this.competidoresEnLiga.size();
+		} else {
+			return 0;
 		}
-		return sumatoriaDestreza / this.competidoresEnLiga.size();
 	}
-	
+
 	public boolean getEstaEnAlgunaLiga() {
 		return estaEnAlgunaLiga;
 	}
@@ -102,8 +121,7 @@ public abstract class Liga implements Competidor {
 
 	@Override
 	public String toString() {
-		return "Liga: " + this.nombreLiga  + "[" + this.competidoresEnLiga + "]";
+		return "Liga: " + this.nombreLiga + "[" + this.competidoresEnLiga + "]";
 	}
-	
-	
+
 }

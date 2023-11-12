@@ -38,7 +38,7 @@ public abstract class Personaje implements Competidor {
 		return false;
 	}
 
-	public boolean esGanador(Personaje c2, Caracteristica c) {
+	public boolean esGanador(Competidor c2, Caracteristica c) {
 		do {
 			if (c.getValorCaracteristica(this) > c.getValorCaracteristica(c2)) {
 				return true;
