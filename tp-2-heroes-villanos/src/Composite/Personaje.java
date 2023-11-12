@@ -1,59 +1,107 @@
 package Composite;
 
-import State.Habilidad;
+import State.Caracteristica;
 
-public abstract class Personaje implements Competidor{
-	
-	protected Habilidad habilidad;
-	protected int nombreCompetidor;
-	protected boolean estaEnAlgunaLiga;
-	
+public abstract class Personaje implements Competidor {
+
+	protected boolean estaEnAlgunaLiga = false;
+	protected String nombreReal;
+	protected String nombrePersonaje;
+
+	private int fuerza;
+	private int resistencia;
+	private int velocidad;
+	private int destreza;
+
+	public Personaje(String nombreReal, String nombrePersonaje, int fuerza, int resistencia, int velocidad,
+			int destreza) {
+		super();
+		this.nombreReal = nombreReal;
+		this.nombrePersonaje = nombrePersonaje;
+		this.fuerza = fuerza;
+		this.resistencia = resistencia;
+		this.velocidad = velocidad;
+		this.destreza = destreza;
+	}
+
 	@Override
 	public abstract boolean esHeroe();
 
 	@Override
 	public abstract boolean esVillano();
-	
+
 	public boolean esLigaHeroe() {
 		return false;
 	}
+
 	public boolean esLigaVillano() {
 		return false;
 	}
 
-	public boolean esGanador() {
-		// TODO Auto-generated method stub
+	public boolean esGanador(Personaje c2, Caracteristica c) {
+		do {
+			if (c.getValorCaracteristica(this) > c.getValorCaracteristica(c2)) {
+				return true;
+			}
+		} while (c.siguienteCaracteristica());
+
 		return false;
 	}
 
-	public int getDestrezaValor() {
-		//return this.habilidad.getDestreza();
-		return 0;
+	public int getFuerza() {
+		return fuerza;
 	}
 
-	public int getFuerzaValor() {
-		//return this.habilidad.getFuerza();
-		return 0;
+	public void setFuerza(int fuerza) {
+		this.fuerza = fuerza;
 	}
 
-	public int getVelocidadValor() {
-		//return this.habilidad.getVelocidad();
-		return 0;
+	public int getResistencia() {
+		return resistencia;
 	}
 
-	public int getResistenciaValor() {
-		//return this.habilidad.getResistencia();
-		return 0;
+	public void setResistencia(int resistencia) {
+		this.resistencia = resistencia;
 	}
 
-	public Habilidad getHabilidad() {
-		return this.habilidad;
+	public int getVelocidad() {
+		return velocidad;
+	}
+
+	public void setVelocidad(int velocidad) {
+		this.velocidad = velocidad;
+	}
+
+	public int getDestreza() {
+		return destreza;
+	}
+
+	public void setDestreza(int destreza) {
+		this.destreza = destreza;
+	}
+
+	public String getNombreReal() {
+		return nombreReal;
+	}
+
+	public void setNombreReal(String nombreReal) {
+		this.nombreReal = nombreReal;
+	}
+
+	public String getNombrePersonaje() {
+		return nombrePersonaje;
+	}
+
+	public void setNombrePersonaje(String nombrePersonaje) {
+		this.nombrePersonaje = nombrePersonaje;
+	}
+
+	public boolean getEstaEnAlgunaLiga() {
+		return estaEnAlgunaLiga;
 	}
 
 	public void setEstaEnAlgunaLiga(boolean estaEnAlgunaLiga) {
 		this.estaEnAlgunaLiga = estaEnAlgunaLiga;
 	}
-	
-	
 
 }
