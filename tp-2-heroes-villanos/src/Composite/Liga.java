@@ -40,7 +40,7 @@ public abstract class Liga implements Competidor {
 		if (!c.getEstaEnAlgunaLiga()) {
 			throw new DeleteCompetitorException("No se puede eliminar, no pertenece a ninguna liga");
 		}
-		if (this.competidoresEnLiga.contains(c)) {
+		if (!this.competidoresEnLiga.contains(c)) {
 			throw new DeleteCompetitorException("No se puede eliminar, no pertenece a esta liga");
 		}
 		this.competidoresEnLiga.remove(c);
@@ -48,12 +48,15 @@ public abstract class Liga implements Competidor {
 		return true;
 	}
 
-	public boolean esGanador(Competidor competidor, Caracteristica caracteristica) {
+	public boolean esGanador(Competidor c2, Caracteristica c) {
 		do {
-			if (caracteristica.getValorCaracteristica(this) > caracteristica.getValorCaracteristica(competidor)) {
+			if (c.getValorCaracteristica(this) > c.getValorCaracteristica(c2)) {
 				return true;
 			}
-		} while (caracteristica.siguienteCaracteristica());
+			if (c.getValorCaracteristica(this) < c.getValorCaracteristica(c2)) {
+				return false;
+			}
+		} while (c.siguienteCaracteristica());
 
 		return false;
 	}

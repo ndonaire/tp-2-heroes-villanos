@@ -2,9 +2,9 @@ package Composite;
 
 public class Villano extends Personaje {
 
-	public Villano(String nombreReal, String nombrePersonaje, int fuerza, int resistencia, int velocidad,
-			int destreza) {
-		super(nombreReal, nombrePersonaje, fuerza, resistencia, velocidad, destreza);
+	public Villano(String nombreReal, String nombrePersonaje, int fuerza, int resistencia, int destreza,
+			int velocidad) {
+		super(nombreReal, nombrePersonaje, fuerza, resistencia, destreza, velocidad);
 	}
 
 	@Override
@@ -21,7 +21,7 @@ public class Villano extends Personaje {
 	public boolean esVillano() {
 		return true;
 	}
-	
+
 	@Override
 	public String getNombreLiga() {
 		return null;

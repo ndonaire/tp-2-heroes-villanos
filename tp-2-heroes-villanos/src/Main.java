@@ -40,9 +40,9 @@ public class Main {
 		ligaDeVillanos.agregarCompetidor(p5);
 		System.out.println(ligaDeVillanos.toString());
 
-		System.out.println(p1.esGanador(p2, new Caracteristica(2)));
-		System.out.println(ligaDeLaJusticia_final.esGanador(p5, new Caracteristica(2)));
-		System.out.println(ligaDeVillanos.esGanador(ligaDeLaJusticia_final, new Caracteristica(2)));
+		//System.out.println(p1.esGanador(p2, new Caracteristica(2)));
+		//System.out.println(ligaDeLaJusticia_final.esGanador(p5, new Caracteristica(2)));
+		System.out.println(ligaDeVillanos.esGanador(ligaDeLaJusticia_final, new Caracteristica(1)));
 		
 		Personaje v1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 100, 100, 100, 50);
 		Personaje v2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 100, 100, 100, 50);

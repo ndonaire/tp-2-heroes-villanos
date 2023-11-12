@@ -10,11 +10,11 @@ public abstract class Personaje implements Competidor {
 
 	private int fuerza;
 	private int resistencia;
-	private int velocidad;
 	private int destreza;
+	private int velocidad;
 
-	public Personaje(String nombreReal, String nombrePersonaje, int fuerza, int resistencia, int velocidad,
-			int destreza) {
+	public Personaje(String nombreReal, String nombrePersonaje, int fuerza, int resistencia, int destreza,
+			int velocidad) {
 		super();
 		this.nombreReal = nombreReal;
 		this.nombrePersonaje = nombrePersonaje;
@@ -43,11 +43,14 @@ public abstract class Personaje implements Competidor {
 			if (c.getValorCaracteristica(this) > c.getValorCaracteristica(c2)) {
 				return true;
 			}
+			if (c.getValorCaracteristica(this) < c.getValorCaracteristica(c2)) {
+				return false;
+			}
 		} while (c.siguienteCaracteristica());
 
 		return false;
 	}
-	
+
 	public abstract String toString();
 
 	public int getFuerza() {

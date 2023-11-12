@@ -2,8 +2,8 @@ package Composite;
 
 public class Heroe extends Personaje {
 
-	public Heroe(String nombreReal, String nombrePersonaje, int fuerza, int resistencia, int velocidad, int destreza) {
-		super(nombreReal, nombrePersonaje, fuerza, resistencia, velocidad, destreza);
+	public Heroe(String nombreReal, String nombrePersonaje, int fuerza, int resistencia, int destreza, int velocidad) {
+		super(nombreReal, nombrePersonaje, fuerza, resistencia, destreza, velocidad);
 	}
 
 	@Override
