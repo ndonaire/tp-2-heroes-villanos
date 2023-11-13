@@ -6,6 +6,7 @@ import org.junit.Test;
 import Exceptions.AddToLeagueException;
 import Exceptions.DeleteCompetitorException;
 import Exceptions.FeatureLevelException;
+import Exceptions.FriendlyFireException;
 import State.Caracteristica;
 
 public class LigaTests {
@@ -125,7 +126,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsLigaEsGanador() throws AddToLeagueException, FeatureLevelException {
+	public void testLigaVsLigaEsGanador() throws AddToLeagueException, FeatureLevelException, FriendlyFireException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 50, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 50, 50, 50);
 		
@@ -145,7 +146,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsCompetidorEsGanador() throws AddToLeagueException, FeatureLevelException {
+	public void testLigaVsCompetidorEsGanador() throws AddToLeagueException, FeatureLevelException, FriendlyFireException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 500, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 500, 50, 50);
 		
@@ -160,7 +161,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsLigaNoEsGanador() throws AddToLeagueException, FeatureLevelException {
+	public void testLigaVsLigaNoEsGanador() throws AddToLeagueException, FeatureLevelException, FriendlyFireException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 50, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 50, 50, 50);
 		
@@ -180,7 +181,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsCompetidorNoEsGanador() throws AddToLeagueException, FeatureLevelException {
+	public void testLigaVsCompetidorNoEsGanador() throws AddToLeagueException, FeatureLevelException, FriendlyFireException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 500, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 500, 50, 50);
 		
@@ -195,7 +196,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsLigaEmpateGana() throws AddToLeagueException, FeatureLevelException {
+	public void testLigaVsLigaEmpateGana() throws AddToLeagueException, FeatureLevelException, FriendlyFireException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 50, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 50, 50, 50);
 		
@@ -215,7 +216,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsCompetidorEmpateGana() throws AddToLeagueException, FeatureLevelException {
+	public void testLigaVsCompetidorEmpateGana() throws AddToLeagueException, FeatureLevelException, FriendlyFireException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 500, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 500, 50, 50);
 		
@@ -230,7 +231,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsLigaEmpatePierde() throws AddToLeagueException, FeatureLevelException {
+	public void testLigaVsLigaEmpatePierde() throws AddToLeagueException, FeatureLevelException, FriendlyFireException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 50, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 50, 50, 50);
 		
@@ -250,7 +251,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsCompetidorEmpatePierde() throws AddToLeagueException, FeatureLevelException {
+	public void testLigaVsCompetidorEmpatePierde() throws AddToLeagueException, FeatureLevelException, FriendlyFireException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 500, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 500, 50, 50);
 		
@@ -265,7 +266,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsLigaEmpateFinal() throws AddToLeagueException, FeatureLevelException {
+	public void testLigaVsLigaEmpateFinal() throws AddToLeagueException, FeatureLevelException, FriendlyFireException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 50, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 50, 50, 50);
 		
@@ -285,7 +286,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsCompetidorEmpateFinal() throws AddToLeagueException, FeatureLevelException {
+	public void testLigaVsCompetidorEmpateFinal() throws AddToLeagueException, FeatureLevelException, FriendlyFireException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 500, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 500, 50, 50);
 		

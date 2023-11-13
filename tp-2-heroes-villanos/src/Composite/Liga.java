@@ -4,6 +4,7 @@ import java.util.List;
 
 import Exceptions.AddToLeagueException;
 import Exceptions.DeleteCompetitorException;
+import Exceptions.FriendlyFireException;
 import State.Caracteristica;
 
 import java.util.ArrayList;
@@ -52,7 +53,13 @@ public abstract class Liga implements Competidor {
 		return true;
 	}
 
-	public boolean esGanador(Competidor c2, Caracteristica c) {
+	public boolean esGanador(Competidor c2, Caracteristica c) throws FriendlyFireException{
+		if (this.getClass() == c2.getClass()
+                || this instanceof LigaHeroe  && c2 instanceof Heroe
+                || this instanceof LigaVillano && c2 instanceof Villano) {
+            throw new FriendlyFireException("No se puede combatir entre compañeros");
+        }
+		
 		do {
 			if (c.getValorCaracteristica(this) > c.getValorCaracteristica(c2)) {
 				return true;

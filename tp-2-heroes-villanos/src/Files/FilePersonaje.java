@@ -24,8 +24,12 @@ public class FilePersonaje {
 		Scanner lector = new Scanner(archivo);
 		try {
 			esArchivoVacio(lector);
+		} catch (EmptyFileException e) {
+			System.out.println(e.getMessage());
+		}
+		while (lector.hasNext()) {
+			try {
 
-			while (lector.hasNext()) {
 				contadorLineas++;
 				String linea = lector.nextLine();
 				String[] datosPersonaje = linea.split("[,]");
@@ -49,18 +53,17 @@ public class FilePersonaje {
 						FilePersonaje.noSePudoInsertar(linea);
 						break;
 					}
+
 				}
+			} catch (ArrayIndexOutOfBoundsException e) {
+				System.out.println("Error en delimitadores del archivo");
+			} catch (ExistingCompetitorException e) {
+				System.out.println(e.getMessage());
+			} catch (NumberFormatException e) {
+				System.out.println(e.getMessage());
+			} catch (FeatureLevelException e) {
+				System.out.println("El valor de las caracteristicas debe ser mayor a cero");
 			}
-		} catch (EmptyFileException e) {
-			System.out.println(e.getMessage());
-		} catch (ArrayIndexOutOfBoundsException e) {
-			System.out.println("Error en delimitadores del archivo");
-		} catch (ExistingCompetitorException e) {
-			System.out.println(e.getMessage());
-		} catch (NumberFormatException e) {
-			System.out.println(e.getMessage());
-		} catch (FeatureLevelException e) {
-			System.out.println("El valor de las caracteristicas debe ser mayor a cero");
 		}
 		lector.close();
 		System.out.println(String.format("El archivo tenia %d lineas", contadorLineas));
@@ -87,12 +90,12 @@ public class FilePersonaje {
 					|| datosPersonaje[6].trim() == null) {
 				return false;
 			}
-				
-				if (Integer.parseInt(datosPersonaje[3].trim()) < 0 || Integer.parseInt(datosPersonaje[4].trim()) < 0
-						|| Integer.parseInt(datosPersonaje[5].trim()) < 0
-						|| Integer.parseInt(datosPersonaje[6].trim()) < 0) {
-					return false;
-				}
+
+			if (Integer.parseInt(datosPersonaje[3].trim()) < 0 || Integer.parseInt(datosPersonaje[4].trim()) < 0
+					|| Integer.parseInt(datosPersonaje[5].trim()) < 0
+					|| Integer.parseInt(datosPersonaje[6].trim()) < 0) {
+				return false;
+			}
 		} catch (NumberFormatException e) {
 			System.out.println("El valor de las caracteristicas debe ser mayor a cero");
 		}

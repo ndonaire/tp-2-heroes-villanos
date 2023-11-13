@@ -3,7 +3,6 @@ package Main;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-import Composite.Heroe;
 import Composite.Liga;
 import Composite.Personaje;
 import UserInterface.UserInterface;

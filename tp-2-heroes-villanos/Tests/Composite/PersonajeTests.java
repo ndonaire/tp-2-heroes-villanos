@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import Exceptions.AddToLeagueException;
 import Exceptions.FeatureLevelException;
+import Exceptions.FriendlyFireException;
 import State.Caracteristica;
 
 public class PersonajeTests {
@@ -24,7 +25,7 @@ public class PersonajeTests {
 	}
 	
 	@Test
-	public void testCompetidorVsCompetidorEsGanador() throws FeatureLevelException {
+	public void testCompetidorVsCompetidorEsGanador() throws FeatureLevelException, FriendlyFireException {
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 300, 1000, 120, 50);
 		Personaje p2 = new Villano("Jack Oswald White", "Joker", 100, 200, 200, 100);
 
@@ -32,7 +33,7 @@ public class PersonajeTests {
 	}
 	
 	@Test
-	public void testCompetidorVsLigaEsGanador() throws AddToLeagueException, FeatureLevelException {
+	public void testCompetidorVsLigaEsGanador() throws AddToLeagueException, FeatureLevelException, FriendlyFireException {
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 300, 1000, 120, 50);
 		Personaje p2 = new Villano("Jack Oswald White", "Joker", 100, 200, 200, 100);
 		Personaje p3 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 100, 100, 100, 50);
@@ -45,7 +46,7 @@ public class PersonajeTests {
 	}
 	
 	@Test
-	public void testCompetidorVsCompetidorNoEsGanador() throws FeatureLevelException {
+	public void testCompetidorVsCompetidorNoEsGanador() throws FeatureLevelException, FriendlyFireException {
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 300, 1000, 120, 50);
 		Personaje p2 = new Villano("Jack Oswald White", "Joker", 100, 200, 200, 100);
 
@@ -53,7 +54,7 @@ public class PersonajeTests {
 	}
 	
 	@Test
-	public void testCompetidorVsLigaNoEsGanador() throws AddToLeagueException, FeatureLevelException {
+	public void testCompetidorVsLigaNoEsGanador() throws AddToLeagueException, FeatureLevelException, FriendlyFireException {
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 30, 1000, 120, 50);
 		Personaje p2 = new Villano("Jack Oswald White", "Joker", 100, 200, 200, 100);
 		Personaje p3 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 100, 100, 100, 50);
@@ -66,7 +67,7 @@ public class PersonajeTests {
 	}
 	
 	@Test
-	public void testCompetidorVsCompetidorEmpateGana() throws FeatureLevelException {
+	public void testCompetidorVsCompetidorEmpateGana() throws FeatureLevelException, FriendlyFireException {
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 100, 1000, 120, 50);
 		Personaje p2 = new Villano("Jack Oswald White", "Joker", 100, 200, 200, 100);
 
@@ -74,7 +75,7 @@ public class PersonajeTests {
 	}
 	
 	@Test
-	public void testCompetidorVsLigaEmpateGana() throws AddToLeagueException, FeatureLevelException {
+	public void testCompetidorVsLigaEmpateGana() throws AddToLeagueException, FeatureLevelException, FriendlyFireException {
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 300, 1000, 120, 50);
 		Personaje p2 = new Villano("Jack Oswald White", "Joker", 300, 200, 200, 100);
 		Personaje p3 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 300, 100, 100, 50);
@@ -87,7 +88,7 @@ public class PersonajeTests {
 	}
 	
 	@Test
-	public void testCompetidorVsCompetidorEmpatePierde() throws FeatureLevelException {
+	public void testCompetidorVsCompetidorEmpatePierde() throws FeatureLevelException, FriendlyFireException {
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 100, 100, 120, 50);
 		Personaje p2 = new Villano("Jack Oswald White", "Joker", 100, 200, 200, 100);
 
@@ -95,7 +96,7 @@ public class PersonajeTests {
 	}
 	
 	@Test
-	public void testCompetidorVsLigaEmpatePierde() throws AddToLeagueException, FeatureLevelException {
+	public void testCompetidorVsLigaEmpatePierde() throws AddToLeagueException, FeatureLevelException, FriendlyFireException {
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 300, 100, 120, 50);
 		Personaje p2 = new Villano("Jack Oswald White", "Joker", 300, 200, 200, 100);
 		Personaje p3 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 300, 100, 100, 50);
@@ -108,7 +109,7 @@ public class PersonajeTests {
 	}
 	
 	@Test
-	public void testCompetidorVsCompetidorEmpateFinal() throws FeatureLevelException {
+	public void testCompetidorVsCompetidorEmpateFinal() throws FeatureLevelException, FriendlyFireException {
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 100, 100, 120, 50);
 		Personaje p2 = new Villano("Jack Oswald White", "Joker", 100, 100, 120, 50);
 
@@ -116,7 +117,7 @@ public class PersonajeTests {
 	}
 	
 	@Test
-	public void testCompetidorVsLigaEmpateFinal() throws AddToLeagueException, FeatureLevelException {
+	public void testCompetidorVsLigaEmpateFinal() throws AddToLeagueException, FeatureLevelException, FriendlyFireException {
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 300, 100, 120, 50);
 		Personaje p2 = new Villano("Jack Oswald White", "Joker", 300, 100, 120, 50);
 		Personaje p3 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 300, 100, 120, 50);

@@ -1,9 +1,12 @@
 package Composite;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import Exceptions.FeatureLevelException;
+import Exceptions.FriendlyFireException;
 import State.Caracteristica;
 
 public abstract class Personaje implements Competidor {
@@ -44,7 +47,11 @@ public abstract class Personaje implements Competidor {
 		return false;
 	}
 
-	public boolean esGanador(Competidor c2, Caracteristica c) {
+	public boolean esGanador(Competidor c2, Caracteristica c) throws FriendlyFireException {
+		if (this.getClass() == c2.getClass() || this instanceof Heroe && c2 instanceof LigaHeroe
+				|| this instanceof Villano && c2 instanceof LigaVillano) {
+			throw new FriendlyFireException("No se puede combatir entre compañeros");
+		}
 		do {
 			if (c.getValorCaracteristica(this) > c.getValorCaracteristica(c2)) {
 				return true;
@@ -66,9 +73,15 @@ public abstract class Personaje implements Competidor {
 		System.out.println("-------------------");
 
 		for (Liga l : ligas.values()) {
-			if (!this.esGanador(l, c)) {
-				System.out.println(String.format(l.getNombre()));
+			try {
+				if (!this.esGanador(l, c)) {
+					System.out.println(String.format(l.getNombre()));
+				}
+			} catch (FriendlyFireException e) {
+				// Probamos aunque sean compañeros como el error no surge de la entrada del
+				// usuario lo ignoramos
 			}
+
 		}
 
 		System.out.println("-------------------");
@@ -76,15 +89,60 @@ public abstract class Personaje implements Competidor {
 		System.out.println("-------------------");
 
 		for (Personaje p : personajes.values()) {
-
-			if (!this.esGanador(p, new Caracteristica(1))) {
-				System.out.println(String.format(p.getNombre()));
+			try {
+				if (!this.esGanador(p, new Caracteristica(1))) {
+					System.out.println(String.format(p.getNombre()));
+				}
+			} catch (FriendlyFireException e) {
+				// Probamos aunque sean compañeros como el error no surge de la entrada del
+				// usuario lo ignoramos
 			}
 
 		}
 		System.out.println("-------------------");
 	}
+	
+	public static void ordenarLista(ArrayList<Personaje> lista, ArrayList<String> aComparar) {
+		ArrayList<Comparator<Personaje>> comparators = new ArrayList<Comparator<Personaje>>(4);
+		for (String caracteristica : aComparar) {
+			if (comparators.size() < 4) {
+				switch (caracteristica) {
+					case "Velocidad":
+						comparators.add(Comparator.comparing(Personaje::getVelocidad));
+						break;
+					case "Fuerza":
+						comparators.add(Comparator.comparing(Personaje::getFuerza));
+						break;
+					case "Resistencia":
+						comparators.add(Comparator.comparing(Personaje::getResistencia));
+						break;
+					case "Destreza":
+						comparators.add(Comparator.comparing(Personaje::getDestreza));
+						break;
+					default:
+						break;
+				}
+			}
+		}
 
+		int tamComparators = comparators.size();
+
+		if (tamComparators == 1) {
+			lista.sort(comparators.get(0));
+		}
+		if (tamComparators == 2) {
+			lista.sort(comparators.get(0).thenComparing(comparators.get(1)));
+		}
+		if (tamComparators == 3) {
+			lista.sort(comparators.get(0)
+					.thenComparing(comparators.get(1).thenComparing(comparators.get(2))));
+		}
+		if (tamComparators == 4) {
+			lista.sort(comparators.get(0).thenComparing(comparators.get(1)
+					.thenComparing(comparators.get(2).thenComparing(comparators.get(3)))));
+		}
+	}
+	
 	public int getFuerza() {
 		return fuerza;
 	}
