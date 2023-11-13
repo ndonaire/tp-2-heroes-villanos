@@ -1,5 +1,9 @@
 package Composite;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+
+import Exceptions.FeatureLevelException;
 import State.Caracteristica;
 
 public abstract class Personaje implements Competidor {
@@ -14,8 +18,10 @@ public abstract class Personaje implements Competidor {
 	private int velocidad;
 
 	public Personaje(String nombreReal, String nombrePersonaje, int fuerza, int resistencia, int destreza,
-			int velocidad) {
-		super();
+			int velocidad) throws FeatureLevelException {
+		if (fuerza < 0 || resistencia < 0 || destreza < 0 || velocidad < 0) {
+			throw new FeatureLevelException("No se pueden cargar características menores a cero");
+		}
 		this.nombreReal = nombreReal;
 		this.nombrePersonaje = nombrePersonaje;
 		this.fuerza = fuerza;
@@ -51,6 +57,34 @@ public abstract class Personaje implements Competidor {
 		return false;
 	}
 
+	public void mostrarVencedores(LinkedHashMap<String, Liga> ligas, HashMap<String, Personaje> personajes,
+			Caracteristica c) {
+		System.out.println("Lista de vencedores");
+		System.out.println("*******************");
+
+		System.out.println("Lista de ligas");
+		System.out.println("-------------------");
+
+		for (Liga l : ligas.values()) {
+			if (!this.esGanador(l, c)) {
+				System.out.println(String.format(l.getNombre()));
+			}
+		}
+
+		System.out.println("-------------------");
+		System.out.println("Lista de personajes");
+		System.out.println("-------------------");
+
+		for (Personaje p : personajes.values()) {
+
+			if (!this.esGanador(p, new Caracteristica(1))) {
+				System.out.println(String.format(p.getNombre()));
+			}
+
+		}
+		System.out.println("-------------------");
+	}
+
 	public int getFuerza() {
 		return fuerza;
 	}
@@ -74,7 +108,7 @@ public abstract class Personaje implements Competidor {
 	public String getNombre() {
 		return nombrePersonaje;
 	}
-	
+
 	public boolean getEstaEnAlgunaLiga() {
 		return estaEnAlgunaLiga;
 	}
@@ -82,6 +116,6 @@ public abstract class Personaje implements Competidor {
 	public void setEstaEnAlgunaLiga(boolean estaEnAlgunaLiga) {
 		this.estaEnAlgunaLiga = estaEnAlgunaLiga;
 	}
-	
+
 	public abstract String toString();
 }

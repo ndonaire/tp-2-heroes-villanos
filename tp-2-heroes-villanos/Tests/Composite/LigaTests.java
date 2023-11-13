@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import Exceptions.AddToLeagueException;
 import Exceptions.DeleteCompetitorException;
+import Exceptions.FeatureLevelException;
 import State.Caracteristica;
 
 public class LigaTests {
@@ -24,7 +25,7 @@ public class LigaTests {
 	}
 
 	@Test
-	public void testEliminarCompetidor() throws AddToLeagueException, DeleteCompetitorException {
+	public void testEliminarCompetidor() throws AddToLeagueException, DeleteCompetitorException, FeatureLevelException {
 		String resultadoEsperado = "Liga de la justicia, Superman";
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 100, 100, 100, 50);
 		Personaje p2 = new Heroe("Clark Kent", "Superman", 100, 200, 200, 100);
@@ -39,7 +40,7 @@ public class LigaTests {
 	}
 
 	@Test
-	public void testEliminarLigaAnidada() throws AddToLeagueException, DeleteCompetitorException {
+	public void testEliminarLigaAnidada() throws AddToLeagueException, DeleteCompetitorException, FeatureLevelException {
 		String resultadoEsperado = "Liga de la justicia 2";
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 100, 100, 100, 50);
 		Personaje p2 = new Heroe("Clark Kent", "Superman", 100, 200, 200, 100);
@@ -57,7 +58,7 @@ public class LigaTests {
 	}
 
 	@Test(expected = DeleteCompetitorException.class)
-	public void testEliminarCompetidorSinLiga() throws AddToLeagueException, DeleteCompetitorException {
+	public void testEliminarCompetidorSinLiga() throws AddToLeagueException, DeleteCompetitorException, FeatureLevelException {
 		
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 100, 100, 100, 50);
 		Personaje p2 = new Heroe("Clark Kent", "Superman", 100, 200, 200, 100);
@@ -70,7 +71,7 @@ public class LigaTests {
 	}
 
 	@Test(expected = DeleteCompetitorException.class)
-	public void testEliminarLigaSinLigaAnidada() throws AddToLeagueException, DeleteCompetitorException {
+	public void testEliminarLigaSinLigaAnidada() throws AddToLeagueException, DeleteCompetitorException, FeatureLevelException {
 		
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 100, 100, 100, 50);
 		Personaje p2 = new Heroe("Clark Kent", "Superman", 100, 200, 200, 100);
@@ -86,7 +87,7 @@ public class LigaTests {
 	}
 	
 	@Test(expected = DeleteCompetitorException.class)
-	public void testEliminarCompetidorFueraDeLiga() throws AddToLeagueException, DeleteCompetitorException {
+	public void testEliminarCompetidorFueraDeLiga() throws AddToLeagueException, DeleteCompetitorException, FeatureLevelException {
 		
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 100, 100, 100, 50);
 		Personaje p2 = new Heroe("Clark Kent", "Superman", 100, 200, 200, 100);
@@ -102,7 +103,7 @@ public class LigaTests {
 	}
 
 	@Test(expected = DeleteCompetitorException.class)
-	public void testEliminarLigaFueraDeLigaAnidada() throws AddToLeagueException, DeleteCompetitorException {
+	public void testEliminarLigaFueraDeLigaAnidada() throws AddToLeagueException, DeleteCompetitorException, FeatureLevelException {
 		
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 100, 100, 100, 50);
 		Personaje p2 = new Heroe("Clark Kent", "Superman", 100, 200, 200, 100);
@@ -124,7 +125,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsLigaEsGanador() throws AddToLeagueException {
+	public void testLigaVsLigaEsGanador() throws AddToLeagueException, FeatureLevelException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 50, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 50, 50, 50);
 		
@@ -144,7 +145,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsCompetidorEsGanador() throws AddToLeagueException {
+	public void testLigaVsCompetidorEsGanador() throws AddToLeagueException, FeatureLevelException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 500, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 500, 50, 50);
 		
@@ -159,7 +160,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsLigaNoEsGanador() throws AddToLeagueException {
+	public void testLigaVsLigaNoEsGanador() throws AddToLeagueException, FeatureLevelException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 50, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 50, 50, 50);
 		
@@ -179,7 +180,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsCompetidorNoEsGanador() throws AddToLeagueException {
+	public void testLigaVsCompetidorNoEsGanador() throws AddToLeagueException, FeatureLevelException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 500, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 500, 50, 50);
 		
@@ -194,7 +195,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsLigaEmpateGana() throws AddToLeagueException {
+	public void testLigaVsLigaEmpateGana() throws AddToLeagueException, FeatureLevelException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 50, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 50, 50, 50);
 		
@@ -214,7 +215,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsCompetidorEmpateGana() throws AddToLeagueException {
+	public void testLigaVsCompetidorEmpateGana() throws AddToLeagueException, FeatureLevelException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 500, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 500, 50, 50);
 		
@@ -229,7 +230,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsLigaEmpatePierde() throws AddToLeagueException {
+	public void testLigaVsLigaEmpatePierde() throws AddToLeagueException, FeatureLevelException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 50, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 50, 50, 50);
 		
@@ -249,7 +250,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsCompetidorEmpatePierde() throws AddToLeagueException {
+	public void testLigaVsCompetidorEmpatePierde() throws AddToLeagueException, FeatureLevelException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 500, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 500, 50, 50);
 		
@@ -264,7 +265,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsLigaEmpateFinal() throws AddToLeagueException {
+	public void testLigaVsLigaEmpateFinal() throws AddToLeagueException, FeatureLevelException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 50, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 50, 50, 50);
 		
@@ -284,7 +285,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testLigaVsCompetidorEmpateFinal() throws AddToLeagueException {
+	public void testLigaVsCompetidorEmpateFinal() throws AddToLeagueException, FeatureLevelException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 50, 500, 50, 50);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 50, 500, 50, 50);
 		
@@ -299,7 +300,7 @@ public class LigaTests {
 	}
 
 	@Test
-	public void testGetFuerza() throws AddToLeagueException {
+	public void testGetFuerza() throws AddToLeagueException, FeatureLevelException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 500, 350, 400, 100);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 150, 300, 500, 150);
 		
@@ -311,7 +312,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testGetResistencia() throws AddToLeagueException {
+	public void testGetResistencia() throws AddToLeagueException, FeatureLevelException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 500, 350, 400, 100);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 150, 300, 500, 150);
 		
@@ -323,7 +324,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testGetDestreza() throws AddToLeagueException {
+	public void testGetDestreza() throws AddToLeagueException, FeatureLevelException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 500, 350, 400, 100);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 150, 300, 500, 150);
 		
@@ -335,7 +336,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testGetVelocidad() throws AddToLeagueException {
+	public void testGetVelocidad() throws AddToLeagueException, FeatureLevelException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 500, 350, 400, 100);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 150, 300, 500, 150);
 		
@@ -347,7 +348,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testGetEstaEnAlgunaLigaTrue() throws AddToLeagueException {
+	public void testGetEstaEnAlgunaLigaTrue() throws AddToLeagueException, FeatureLevelException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 500, 350, 400, 100);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 150, 300, 500, 150);
 		
@@ -362,7 +363,7 @@ public class LigaTests {
 	}
 	
 	@Test
-	public void testGetEstaEnAlgunaLigaFalse() throws AddToLeagueException {
+	public void testGetEstaEnAlgunaLigaFalse() throws AddToLeagueException, FeatureLevelException {
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 500, 350, 400, 100);
 		Personaje p2 = new Villano("Pamela Lillian Isley", "Hiedra Venenosa", 150, 300, 500, 150);
 		

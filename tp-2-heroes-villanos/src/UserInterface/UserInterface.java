@@ -10,14 +10,16 @@ import Composite.LigaHeroe;
 import Composite.LigaVillano;
 import Composite.Personaje;
 import Composite.Villano;
+import Exceptions.FeatureLevelException;
 import Files.FileLiga;
 import Files.FilePersonaje;
 import Main.Main;
+import State.Caracteristica;
 
 public class UserInterface {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static void menuPrincipal() {
+    public static void menuPrincipal()  {
         UserInterface.clearScreen();
         String op = "1.Administracion de Personajes\n" +
                 "2.Administracion de Ligas\n" +
@@ -122,11 +124,11 @@ public class UserInterface {
         int opcion = UserInterface.validarEntero(op, 3);
         switch (opcion) {
             case 1:
-                // UserInterface.combatePersonajeContraLiga();
+                UserInterface.combatePersonajeContraLiga();
                 UserInterface.realizacionDeCombates();
                 break;
             case 2:
-                // UserInterface.combateLigaContraLiga();
+                UserInterface.combateLigaContraLiga();
                 UserInterface.realizacionDeCombates();
                 break;
             case 3:
@@ -140,13 +142,13 @@ public class UserInterface {
 
     private static void reportes() {
         UserInterface.clearScreen();
-        String op = "1.Personaje contra liga\n" +
-                "2.Liga contra liga\n" +
+        String op = "1.Todos los personajes o ligas que venzan a un personaje dado\n" +
+                "2.Listado de personajes ordenado\n" +
                 "3.Menu Principal\n";
         int opcion = UserInterface.validarEntero(op, 3);
         switch (opcion) {
             case 1:
-                // UserInterface.competidoresQueVencen();
+                UserInterface.competidoresQueVencen();
                 UserInterface.reportes();
                 break;
             case 2:
@@ -208,7 +210,7 @@ public class UserInterface {
         UserInterface.esperarConsola();
     }
 
-    private static void crearPersonaje() {
+    private static void crearPersonaje()  {
         UserInterface.clearScreen();
         System.out.println("Creacion de personaje");
 
@@ -257,7 +259,9 @@ public class UserInterface {
         } catch (NumberFormatException e) {
             System.out.println("Debe ingresar un numero para la velocidad, fuerza, resistencia y destreza");
             UserInterface.crearPersonaje();
-        }
+        } catch (FeatureLevelException e) {
+        	System.out.println("El valor de las caracteristicas debe ser mayor a cero");
+		}
         System.out.println("El personaje se creo con exito");
         UserInterface.esperarConsola();
     }
@@ -373,6 +377,158 @@ public class UserInterface {
             e.printStackTrace();
         }
         System.out.println("El archivo de ligas se guardo con exito");
+        UserInterface.esperarConsola();
+    }
+    
+    private static void combatePersonajeContraLiga() {
+        UserInterface.clearScreen();
+        System.out.println("Nombre del personaje: ");
+        String personaje = UserInterface.scanner.nextLine();
+        Personaje p = Main.listaPersonajes.get(personaje.trim());
+        if (p == null) {
+            System.out.println(String.format("No se encontro al personaje %s", personaje.trim()));
+            UserInterface.esperarConsola();
+            UserInterface.realizacionDeCombates();
+        }
+        System.out.println("Nombre de la liga: ");
+        String liga = UserInterface.scanner.nextLine();
+        Liga l = Main.listaLigas.get(liga.trim());
+        if (l == null) {
+            System.out.println(String.format("No se encontro a la liga %s", liga.trim()));
+            UserInterface.esperarConsola();
+            UserInterface.realizacionDeCombates();
+        }
+        System.out.println("Caracteristica: (Velocidad/Fuerza/Resistencia/Destreza)");
+        String caracteristica = UserInterface.scanner.nextLine();
+        boolean gano = false;
+        try {
+            switch (caracteristica) {
+                case "Velocidad":
+                    gano = p.esGanador(l, new Caracteristica(4));
+                    break;
+                case "Fuerza":
+                    gano = p.esGanador(l, new Caracteristica(1));
+                    break;
+                case "Resistencia":
+                    gano = p.esGanador(l, new Caracteristica(2));
+                    break;
+                case "Destreza":
+                    gano = p.esGanador(l, new Caracteristica(3));
+                    break;
+                default:
+                    System.out.println(String.format("No existe la caracteristica %s", caracteristica));
+                    UserInterface.realizacionDeCombates();
+                    break;
+            }
+        } catch (Exception e) {
+            System.out.println("No se puede combatir entre compañeros");
+            UserInterface.esperarConsola();
+            UserInterface.realizacionDeCombates();
+        }
+        if (gano) {
+            System.out.println(String.format("%s es ganador!", p.getNombre()));
+        }
+        if (!gano) {
+            System.out.println(String.format("%s es ganador!", l.getNombre()));
+        }
+        UserInterface.esperarConsola();
+    }
+
+    private static void combateLigaContraLiga() {
+        UserInterface.clearScreen();
+        System.out.println("Nombre de la primera liga: ");
+        String liga1 = UserInterface.scanner.nextLine();
+        Liga l1 = Main.listaLigas.get(liga1.trim());
+        if (l1 == null) {
+            System.out.println(String.format("No se encontro a la liga %s", liga1.trim()));
+            UserInterface.esperarConsola();
+            UserInterface.combateLigaContraLiga();
+        }
+        System.out.println("Nombre de la segunda liga: ");
+        String liga2 = UserInterface.scanner.nextLine();
+        Liga l2 = Main.listaLigas.get(liga2.trim());
+        if (l2 == null) {
+            System.out.println(String.format("No se encontro a la liga %s", liga2.trim()));
+            UserInterface.esperarConsola();
+            UserInterface.combateLigaContraLiga();
+        }
+
+        System.out.println("Caracteristica: (Velocidad/Fuerza/Resistencia/Destreza)");
+        String caracteristica = UserInterface.scanner.nextLine();
+
+        boolean gano = false;
+        try {
+            switch (caracteristica) {
+                case "Velocidad":
+                    gano = l1.esGanador(l2, new Caracteristica(4));
+                    break;
+                case "Fuerza":
+                    gano = l1.esGanador(l2, new Caracteristica(1));
+                    break;
+                case "Resistencia":
+                    gano = l1.esGanador(l2, new Caracteristica(2));
+                    break;
+                case "Destreza":
+                    gano = l1.esGanador(l2, new Caracteristica(3));
+                    break;
+                default:
+                    System.out.println(String.format("No existe la caracteristica %s", caracteristica));
+                    UserInterface.realizacionDeCombates();
+                    break;
+            }
+        } catch (Exception e) {
+            System.out.println("No se puede combatir entre compañeros");
+            UserInterface.esperarConsola();
+            UserInterface.realizacionDeCombates();
+        }
+
+        if (gano) {
+            System.out.println(String.format("%s es ganador!", l1.getNombre()));
+        }
+        if (!gano) {
+            System.out.println(String.format("%s es ganador!", l2.getNombre()));
+        }
+        
+        UserInterface.esperarConsola();
+    }
+
+    private static void competidoresQueVencen() {
+        System.out.println("Personaje: ");
+
+        String personajeString = UserInterface.scanner.nextLine();
+        Personaje p = Main.listaPersonajes.get(personajeString.trim());
+
+        System.out.println("Caracteristica: (Velocidad/Fuerza/Resistencia/Destreza)");
+        String caracteristica = UserInterface.scanner.nextLine();
+
+        Caracteristica aComparar = null;
+
+        switch (caracteristica) {
+                case "Velocidad":
+                    aComparar = new Caracteristica(4);
+                    break;
+                case "Fuerza":
+                    aComparar = new Caracteristica(1);
+                    break;
+                case "Resistencia":
+                    aComparar = new Caracteristica(2);
+                    break;
+                case "Destreza":
+                    aComparar = new Caracteristica(3);
+                    break;
+                default:
+                    System.out.println(String.format("No existe la caracteristica %s", caracteristica));
+                    UserInterface.reportes();
+                    break;
+            }
+
+
+        if (p != null) {
+            UserInterface.clearScreen();
+            p.mostrarVencedores(Main.listaLigas, Main.listaPersonajes, aComparar);
+        } else {
+            System.out.println(String.format("No se encontro el personaje %s", personajeString.trim()));
+        }
         UserInterface.esperarConsola();
     }
 

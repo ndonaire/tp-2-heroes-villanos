@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import Exceptions.AddToLeagueException;
+import Exceptions.FeatureLevelException;
 
 public class LigaVillanoTests {
 
@@ -22,7 +23,7 @@ public class LigaVillanoTests {
 	}
 
 	@Test
-	public void testAgregarVillanos() throws AddToLeagueException {
+	public void testAgregarVillanos() throws AddToLeagueException, FeatureLevelException {
 		String resultadoEsperado = "Villanas, Harley Quinn, Hiedra Venenosa";
 
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 100, 100, 100, 50);
@@ -36,7 +37,7 @@ public class LigaVillanoTests {
 	}
 
 	@Test
-	public void testAgregarLigasAnidadas() throws AddToLeagueException {
+	public void testAgregarLigasAnidadas() throws AddToLeagueException, FeatureLevelException {
 		String resultadoEsperado = "Liga Villanos Total, Liga Villanas, liga Villanos";
 
 		Personaje p1 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 100, 100, 100, 50);
@@ -60,7 +61,7 @@ public class LigaVillanoTests {
 	}
 
 	@Test(expected = AddToLeagueException.class)
-	public void testAgregarVillanoADosLigas() throws AddToLeagueException {
+	public void testAgregarVillanoADosLigas() throws AddToLeagueException, FeatureLevelException {
 		Personaje p = new Villano("Harleen Frances Quinzel", "Harley Quinn", 100, 100, 100, 50);
 
 		LigaVillano ligaVillanas1 = new LigaVillano("Liga Villanas 1");
@@ -70,7 +71,7 @@ public class LigaVillanoTests {
 	}
 
 	@Test(expected = AddToLeagueException.class)
-	public void testAgregarLigaADosLigas() throws AddToLeagueException {
+	public void testAgregarLigaADosLigas() throws AddToLeagueException, FeatureLevelException {
 		Personaje p = new Villano("Harleen Frances Quinzel", "Harley Quinn", 100, 100, 100, 50);
 
 		LigaVillano ligaVillanas1 = new LigaVillano("Liga Villanas 1");
@@ -83,7 +84,7 @@ public class LigaVillanoTests {
 	}
 
 	@Test(expected = AddToLeagueException.class)
-	public void testAgregarVillanoMismaLiga() throws AddToLeagueException {
+	public void testAgregarVillanoMismaLiga() throws AddToLeagueException, FeatureLevelException {
 		Personaje p = new Villano("Harleen Frances Quinzel", "Harley Quinn", 100, 100, 100, 50);
 
 		LigaVillano ligaVillanas = new LigaVillano("Liga Villanas 1");
@@ -93,7 +94,7 @@ public class LigaVillanoTests {
 	}
 
 	@Test(expected = AddToLeagueException.class)
-	public void testAgregarLigaMismaLigaAnidada() throws AddToLeagueException {
+	public void testAgregarLigaMismaLigaAnidada() throws AddToLeagueException, FeatureLevelException {
 		Personaje p = new Villano("Harleen Frances Quinzel", "Harley Quinn", 100, 100, 100, 50);
 
 		LigaVillano ligaVillanas1 = new LigaVillano("Liga Villanas 1");
@@ -105,7 +106,7 @@ public class LigaVillanoTests {
 	}
 
 	@Test(expected = AddToLeagueException.class)
-	public void testAgregarLigaSiMisma() throws AddToLeagueException {
+	public void testAgregarLigaSiMisma() throws AddToLeagueException, FeatureLevelException {
 		Personaje p = new Villano("Harleen Frances Quinzel", "Harley Quinn", 100, 100, 100, 50);
 
 		LigaVillano ligaVillanas1 = new LigaVillano("Liga Villanas 1");
@@ -115,7 +116,7 @@ public class LigaVillanoTests {
 	}
 
 	@Test(expected = AddToLeagueException.class)
-	public void testAgregarHeroeLigaVillano() throws AddToLeagueException {
+	public void testAgregarHeroeLigaVillano() throws AddToLeagueException, FeatureLevelException {
 		Personaje p = new Heroe("Bruno Diaz", "Batman", 100, 100, 100, 50);
 
 		LigaVillano ligaVillanos = new LigaVillano("Liga Villanos");
@@ -124,7 +125,7 @@ public class LigaVillanoTests {
 	}
 
 	@Test(expected = AddToLeagueException.class)
-	public void testAgregarLigaHeroeLigaVillano() throws AddToLeagueException {
+	public void testAgregarLigaHeroeLigaVillano() throws AddToLeagueException, FeatureLevelException {
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 100, 100, 100, 50);
 		Personaje p2 = new Heroe("Clark Kent", "Superman", 100, 200, 200, 100);
 

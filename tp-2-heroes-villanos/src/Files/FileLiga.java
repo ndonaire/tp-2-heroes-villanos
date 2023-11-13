@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 import Composite.Heroe;
@@ -13,17 +15,22 @@ import Composite.LigaHeroe;
 import Composite.LigaVillano;
 import Composite.Personaje;
 import Exceptions.AddToLeagueException;
+import Exceptions.EmptyFileException;
+import Exceptions.ExistingCompetitorException;
+import Exceptions.ExistingLeagueException;
 import Main.Main;
 
 public class FileLiga {
-    public static void cargarLigas(String ubicacion) throws FileNotFoundException {
+	public static void cargarLigas(String ubicacion) throws FileNotFoundException {
         int contadorCargados = 0;
         File archivo = new File(ubicacion);
         Scanner lector = new Scanner(archivo);
+        try {
+        	esArchivoVacio(lector);
         while (lector.hasNextLine()) {
             String lineaLiga = lector.nextLine();
             String[] miembrosLiga = lineaLiga.split("[,]");
-
+            buscarLiga(Main.listaLigas,miembrosLiga[0].trim());
             Liga nuevaLiga = null;
             if (miembrosLiga.length > 1) {
                 Personaje primerPer = Main.listaPersonajes.get(miembrosLiga[1].trim());
@@ -72,25 +79,46 @@ public class FileLiga {
                 }
             }
         }
+	}catch (EmptyFileException e) {
+		System.out.println(e.getMessage());
+	}catch (ArrayIndexOutOfBoundsException e) {
+		System.out.println("Error en delimitadores del archivo");
+	} catch (ExistingLeagueException e) {
+		System.out.println(e.getMessage());
+	}
         lector.close();
         System.out.println(String.format("Se insertaron %d ligas", contadorCargados));
     }
 
-    public static void guardarLigas(String ubicacion) throws IOException {
-        File archivo = new File(ubicacion);
-        FileWriter escritor = new FileWriter(archivo);
+	public static void esArchivoVacio(Scanner scanner) throws EmptyFileException {
+		if (!scanner.hasNext()) {
+			throw new EmptyFileException("El archivo está vacío");
+		}
+	}
+	
+	public static void buscarLiga(LinkedHashMap<String, Liga> listaLigas, String nombre)
+			throws ExistingLeagueException {
+		if (listaLigas.containsKey(nombre)) {
+			throw new ExistingLeagueException("Liga duplicada");
+		}
+	}
 
-        for (Liga l : Main.listaLigas.values()) {
-            escritor.write(l.toString() + System.getProperty("line.separator"));
-        }
-        escritor.close();
-    }
 
-    private static void noSePudoInsertar(String linea) {
-        System.out.println("No se pudo insertar la linea :");
-        System.out.println("-----");
-        System.out.println(linea);
-        System.out.println("-----");
-    }
+	public static void guardarLigas(String ubicacion) throws IOException {
+		File archivo = new File(ubicacion);
+		FileWriter escritor = new FileWriter(archivo);
+
+		for (Liga l : Main.listaLigas.values()) {
+			escritor.write(l.toString() + System.getProperty("line.separator"));
+		}
+		escritor.close();
+	}
+
+	private static void noSePudoInsertar(String linea) {
+		System.out.println("No se pudo insertar la linea :");
+		System.out.println("-----");
+		System.out.println(linea);
+		System.out.println("-----");
+	}
 
 }

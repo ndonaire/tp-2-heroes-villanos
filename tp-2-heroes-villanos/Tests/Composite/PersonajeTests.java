@@ -4,26 +4,27 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import Exceptions.AddToLeagueException;
+import Exceptions.FeatureLevelException;
 import State.Caracteristica;
 
 public class PersonajeTests {
 
 	@Test
-	public void testEsLigaHeroe() {
+	public void testEsLigaHeroe() throws FeatureLevelException {
 		Personaje p = new Heroe("Bruno Diaz", "Batman", 100, 100, 100, 50);
 		
 		Assert.assertEquals(p.esLigaHeroe(), false);
 	}
 
 	@Test
-	public void testEsLigaVillano() {
+	public void testEsLigaVillano() throws FeatureLevelException {
 		Personaje p = new Heroe("Bruno Diaz", "Batman", 100, 100, 100, 50);
 		
 		Assert.assertEquals(p.esLigaVillano(), false);
 	}
 	
 	@Test
-	public void testCompetidorVsCompetidorEsGanador() {
+	public void testCompetidorVsCompetidorEsGanador() throws FeatureLevelException {
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 300, 1000, 120, 50);
 		Personaje p2 = new Villano("Jack Oswald White", "Joker", 100, 200, 200, 100);
 
@@ -31,7 +32,7 @@ public class PersonajeTests {
 	}
 	
 	@Test
-	public void testCompetidorVsLigaEsGanador() throws AddToLeagueException {
+	public void testCompetidorVsLigaEsGanador() throws AddToLeagueException, FeatureLevelException {
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 300, 1000, 120, 50);
 		Personaje p2 = new Villano("Jack Oswald White", "Joker", 100, 200, 200, 100);
 		Personaje p3 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 100, 100, 100, 50);
@@ -44,7 +45,7 @@ public class PersonajeTests {
 	}
 	
 	@Test
-	public void testCompetidorVsCompetidorNoEsGanador() {
+	public void testCompetidorVsCompetidorNoEsGanador() throws FeatureLevelException {
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 300, 1000, 120, 50);
 		Personaje p2 = new Villano("Jack Oswald White", "Joker", 100, 200, 200, 100);
 
@@ -52,7 +53,7 @@ public class PersonajeTests {
 	}
 	
 	@Test
-	public void testCompetidorVsLigaNoEsGanador() throws AddToLeagueException {
+	public void testCompetidorVsLigaNoEsGanador() throws AddToLeagueException, FeatureLevelException {
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 30, 1000, 120, 50);
 		Personaje p2 = new Villano("Jack Oswald White", "Joker", 100, 200, 200, 100);
 		Personaje p3 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 100, 100, 100, 50);
@@ -65,7 +66,7 @@ public class PersonajeTests {
 	}
 	
 	@Test
-	public void testCompetidorVsCompetidorEmpateGana() {
+	public void testCompetidorVsCompetidorEmpateGana() throws FeatureLevelException {
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 100, 1000, 120, 50);
 		Personaje p2 = new Villano("Jack Oswald White", "Joker", 100, 200, 200, 100);
 
@@ -73,7 +74,7 @@ public class PersonajeTests {
 	}
 	
 	@Test
-	public void testCompetidorVsLigaEmpateGana() throws AddToLeagueException {
+	public void testCompetidorVsLigaEmpateGana() throws AddToLeagueException, FeatureLevelException {
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 300, 1000, 120, 50);
 		Personaje p2 = new Villano("Jack Oswald White", "Joker", 300, 200, 200, 100);
 		Personaje p3 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 300, 100, 100, 50);
@@ -86,7 +87,7 @@ public class PersonajeTests {
 	}
 	
 	@Test
-	public void testCompetidorVsCompetidorEmpatePierde() {
+	public void testCompetidorVsCompetidorEmpatePierde() throws FeatureLevelException {
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 100, 100, 120, 50);
 		Personaje p2 = new Villano("Jack Oswald White", "Joker", 100, 200, 200, 100);
 
@@ -94,7 +95,7 @@ public class PersonajeTests {
 	}
 	
 	@Test
-	public void testCompetidorVsLigaEmpatePierde() throws AddToLeagueException {
+	public void testCompetidorVsLigaEmpatePierde() throws AddToLeagueException, FeatureLevelException {
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 300, 100, 120, 50);
 		Personaje p2 = new Villano("Jack Oswald White", "Joker", 300, 200, 200, 100);
 		Personaje p3 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 300, 100, 100, 50);
@@ -107,7 +108,7 @@ public class PersonajeTests {
 	}
 	
 	@Test
-	public void testCompetidorVsCompetidorEmpateFinal() {
+	public void testCompetidorVsCompetidorEmpateFinal() throws FeatureLevelException {
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 100, 100, 120, 50);
 		Personaje p2 = new Villano("Jack Oswald White", "Joker", 100, 100, 120, 50);
 
@@ -115,7 +116,7 @@ public class PersonajeTests {
 	}
 	
 	@Test
-	public void testCompetidorVsLigaEmpateFinal() throws AddToLeagueException {
+	public void testCompetidorVsLigaEmpateFinal() throws AddToLeagueException, FeatureLevelException {
 		Personaje p1 = new Heroe("Bruno Diaz", "Batman", 300, 100, 120, 50);
 		Personaje p2 = new Villano("Jack Oswald White", "Joker", 300, 100, 120, 50);
 		Personaje p3 = new Villano("Harleen Frances Quinzel", "Harley Quinn", 300, 100, 120, 50);
@@ -128,31 +129,31 @@ public class PersonajeTests {
 	}
 	
 	@Test
-	public void testGetFuerza() {
+	public void testGetFuerza() throws FeatureLevelException {
 		Personaje p = new Heroe("Bruno Diaz", "Batman", 300, 100, 120, 50);
 		Assert.assertEquals(p.getFuerza(),300);		
 	}
 	
 	@Test
-	public void testGetResistencia() {
+	public void testGetResistencia() throws FeatureLevelException {
 		Personaje p = new Heroe("Bruno Diaz", "Batman", 300, 100, 120, 50);
 		Assert.assertEquals(p.getResistencia(),100);		
 	}
 	
 	@Test
-	public void testGetDestreza() {
+	public void testGetDestreza() throws FeatureLevelException {
 		Personaje p = new Heroe("Bruno Diaz", "Batman", 300, 100, 120, 50);
 		Assert.assertEquals(p.getDestreza(),120);		
 	}
 	
 	@Test
-	public void testGetVelocidad() {
+	public void testGetVelocidad() throws FeatureLevelException {
 		Personaje p = new Heroe("Bruno Diaz", "Batman", 300, 100, 120, 50);
 		Assert.assertEquals(p.getVelocidad(),50);		
 	}
 	
 	@Test
-	public void testGetEstaEnAlgunaLigaTrue() throws AddToLeagueException {
+	public void testGetEstaEnAlgunaLigaTrue() throws AddToLeagueException, FeatureLevelException {
 		Personaje p = new Heroe("Bruno Diaz", "Batman", 300, 100, 120, 50);
 		LigaHeroe ligaDeLaJusticia = new LigaHeroe ("Liga de la justicia");
 		ligaDeLaJusticia.agregarCompetidor(p);
@@ -160,7 +161,7 @@ public class PersonajeTests {
 	}
 	
 	@Test
-	public void testGetEstaEnAlgunaLigaFalse(){
+	public void testGetEstaEnAlgunaLigaFalse() throws FeatureLevelException{
 		Personaje p = new Heroe("Bruno Diaz", "Batman", 300, 100, 120, 50);
 		
 		Assert.assertEquals(p.getEstaEnAlgunaLiga(),false);		
