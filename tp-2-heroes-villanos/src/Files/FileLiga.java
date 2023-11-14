@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Scanner;
@@ -19,10 +20,10 @@ import Exceptions.ExistingLeagueException;
 import Main.Main;
 
 public class FileLiga {
-	public static void cargarLigas(String ubicacion) throws FileNotFoundException {
+	public static void cargarLigas(String ubicacion) throws FileNotFoundException, IOException {
 		int contadorCargados = 0;
 		File archivo = new File(ubicacion);
-		Scanner lector = new Scanner(archivo);
+		Scanner lector = new Scanner(archivo, StandardCharsets.UTF_8);
 
 		try {
 			esArchivoVacio(lector);

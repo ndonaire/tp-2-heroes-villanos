@@ -3,12 +3,15 @@ package Files;
 import static org.junit.Assert.*;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import Main.Main;
 
 public class FilePersonajeTests {
 
@@ -28,51 +31,50 @@ public class FilePersonajeTests {
 		System.setOut(originalOut);
 		System.setErr(originalErr);
 	}
-	
-	//@Test /No funciona --> Tira error de caracteristicas pero no deberia tirar ningun error
-	public void testCargarPersonajesOK() throws FileNotFoundException {
+
+	@Test
+	public void testCargarPersonajesOK() throws IOException {
 		FilePersonaje.cargarPersonajes("PersonajesOK.txt");
-		assertEquals("", out.toString());
+		assertEquals("El archivo tenia 3 lineas\r\n" + "Se insertaron 3 personajes\r\n", out.toString());
 	}
-	
+
 	@Test(expected = FileNotFoundException.class)
-	public void testCargarPersonajesArchivoNoEncontrado() throws FileNotFoundException {
+	public void testCargarPersonajesArchivoNoEncontrado() throws IOException {
 		String path = "";
 		FilePersonaje.cargarPersonajes(path);
 	}
 
 	@Test
-	public void testCargarPersonajesArchivoVacio() throws FileNotFoundException {
+	public void testCargarPersonajesArchivoVacio() throws IOException {
 		FilePersonaje.cargarPersonajes("PersonajesVacio.txt");
 		assertEquals("El archivo está vacío\r\n" + "El archivo tenia 0 lineas\r\n" + "Se insertaron 0 personajes\r\n",
 				out.toString());
-	}	
-	
-	//@Test //No funciona --> Tira error de caracteristicas pero deberia tirar de delimitadores
-	public void testCargarPersonajesParserError() throws FileNotFoundException {
-		FilePersonaje.cargarPersonajes("PersonajesParserError.txt");
-		assertEquals("", out.toString());
-	}
-
-	//@Test //No funciona --> Tira error de caracteristicas pero deberia tirar solo duplicados
-	public void testCargarPersonajesDuplicados() throws FileNotFoundException {
-		FilePersonaje.cargarPersonajes("PersonajesDuplicados.txt");
-		assertEquals("", out.toString());
 	}
 
 	@Test
-	public void testCargarPersonajesErrorCaracteristica() throws FileNotFoundException {
-		FilePersonaje.cargarPersonajes("PersonajeCaracteristicaError.txt");
-		assertEquals("Error en formato de caracteristica\r\n"
-				+ "No se pudo insertar la linea \r\n"
-				+ "-----\r\n"
-				+ "Héroe/Villano, NombreReal, NombrePersonaje, Velocidad, Fuerza, Resistencia, Destreza\r\n"
-				+ "-----\r\n"
-				+ "El archivo tenia 3 lineas\r\n"
+	public void testCargarPersonajesParserError() throws IOException {
+		Main.listaPersonajes.clear();
+		FilePersonaje.cargarPersonajes("PersonajesParserError.txt");
+		assertEquals("Error en delimitadores del archivo\r\n" + "El archivo tenia 2 lineas\r\n"
 				+ "Se insertaron 1 personajes\r\n", out.toString());
 	}
-	
-	
-	
+
+	@Test
+	public void testCargarPersonajesDuplicados() throws IOException {
+		Main.listaPersonajes.clear();
+		FilePersonaje.cargarPersonajes("PersonajesDuplicados.txt");
+		assertEquals("Personaje duplicado\r\n" + "El archivo tenia 2 lineas\r\n" + "Se insertaron 1 personajes\r\n",
+				out.toString());
+	}
+
+	@Test
+	public void testCargarPersonajesErrorCaracteristica() throws IOException {
+		Main.listaPersonajes.clear();
+		FilePersonaje.cargarPersonajes("PersonajeCaracteristicaError.txt");
+		assertEquals(
+				"El archivo tenia 2 lineas\r\n"
+				+ "Se insertaron 1 personajes\r\n",
+				out.toString());
+	}
 
 }

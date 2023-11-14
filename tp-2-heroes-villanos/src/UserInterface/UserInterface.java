@@ -197,6 +197,10 @@ public class UserInterface {
 			System.out.println("El archivo no pudo ser encontrado");
 			UserInterface.esperarConsola();
 			UserInterface.administracionDePersonajes();
+		} catch (IOException e) {
+			System.out.println("Error al decodificar el archivo");
+			UserInterface.esperarConsola();
+			UserInterface.administracionDePersonajes();
 		}
 		UserInterface.esperarConsola();
 	}
@@ -287,6 +291,10 @@ public class UserInterface {
 			FileLiga.cargarLigas(ubicacionEntrada);
 		} catch (FileNotFoundException e) {
 			System.out.println("El archivo no pudo ser encontrado");
+			UserInterface.esperarConsola();
+			UserInterface.administracionDeLigas();
+		} catch (IOException e) {
+			System.out.println("Error al decodificar el archivo");
 			UserInterface.esperarConsola();
 			UserInterface.administracionDeLigas();
 		}
