@@ -1,0 +1,12 @@
+Teen Titans Boys, Robin, Chico bestia, Cyborg
+Teen Titans Girls, Starfire, Raven
+Tene Titans, Teen Titans Boys, Teen Titans Girls
+Liga de la justicia Boys, Batman, Superman, Aquaman, Flash, Linterna verde
+Liga de la justicia, Wonder Woman, Liga de la justicia Boys
+Otras Heroinas, Supergirl, Black Canary
+Otros Heroes, Plastic man, Doctor fate
+Villanas, Harley Quinn, Catwoman, Poison Ivy
+Enemigos de Batman, The Joker, Mr Freeze, Deadshot, The Penguin, The Riddler, Villanas
+Enemigos de Superman, Darkseid, Lex Luthor, Brainiac, Bizarro, 
+Enemigos Teen Titans, Deathstroke
+Otros Villanos, The Jokers Daughter, Prometheus, Darkseid

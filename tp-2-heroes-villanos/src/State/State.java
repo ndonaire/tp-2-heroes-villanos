@@ -4,7 +4,7 @@ import Composite.Competidor;
 
 public abstract class State {
 
-	Caracteristica c;
+	public Caracteristica c;
 
 	protected static int contador;
 

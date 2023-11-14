@@ -32,14 +32,13 @@ public class FileLigaTests {
 		System.setOut(originalOut);
 		System.setErr(originalErr);
 	}
-	
-	@Test 
+
+	@Test
 	public void testCargarLigaOk() throws IOException {
 		FilePersonaje.cargarPersonajes("PersonajesOK.txt");
 		FileLiga.cargarLigas("LigasOK.txt");
-		assertEquals("El archivo tenia 3 lineas\r\n"
-				+ "Se insertaron 3 personajes\r\n"
-				+ "Se insertaron 4 ligas\r\n", out.toString());
+		assertEquals("El archivo tenia 3 lineas\r\n" + "Se insertaron 3 personajes\r\n" + "Se insertaron 4 ligas\r\n",
+				out.toString());
 	}
 
 	@Test(expected = FileNotFoundException.class)
@@ -54,28 +53,24 @@ public class FileLigaTests {
 		assertEquals("El archivo está vacío\r\n" + "Se insertaron 0 ligas\r\n", out.toString());
 	}
 
-	@Test 
+	@Test
 	public void testCargarLigaArchivoParserError() throws IOException {
 		Main.listaPersonajes.clear();
-	    Main.listaLigas.clear();
+		Main.listaLigas.clear();
 		FilePersonaje.cargarPersonajes("PersonajesOK.txt");
 		FileLiga.cargarLigas("LigasParserError.txt");
-		assertEquals("El archivo tenia 3 lineas\r\n"
-				+ "Se insertaron 3 personajes\r\n"
-				+ "Se insertaron 1 ligas\r\n", out.toString());
+		assertEquals("El archivo tenia 3 lineas\r\n" + "Se insertaron 3 personajes\r\n" + "Se insertaron 1 ligas\r\n",
+				out.toString());
 	}
 
-	@Test 
+	@Test
 	public void testCargarLigaDuplicadas() throws IOException {
 		Main.listaPersonajes.clear();
-	    Main.listaLigas.clear();
+		Main.listaLigas.clear();
 		FilePersonaje.cargarPersonajes("PersonajesOK.txt");
 		FileLiga.cargarLigas("LigasDuplicadas.txt");
-		assertEquals("El archivo tenia 3 lineas\r\n"
-				+ "Se insertaron 3 personajes\r\n"
-				+ "Liga duplicada\r\n"
+		assertEquals("El archivo tenia 3 lineas\r\n" + "Se insertaron 3 personajes\r\n" + "Liga duplicada\r\n"
 				+ "Se insertaron 2 ligas\r\n", out.toString());
 	}
-	
-	
+
 }
