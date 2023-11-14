@@ -97,7 +97,7 @@ public class FilePersonaje {
 				return false;
 			}
 		} catch (NumberFormatException e) {
-			System.out.println("El valor de las caracteristicas debe ser mayor a cero");
+			System.out.println("Error en formato de caracteristica");
 		}
 		return true;
 	}
